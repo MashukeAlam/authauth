@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Satus</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Post</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @satus.each do |satu| %>
+      <tr>
+        <td><%= satu.post %></td>
+        <td><%= link_to 'Show', satu %></td>
+        <td><%= link_to 'Edit', edit_satu_path(satu) %></td>
+        <td><%= link_to 'Destroy', satu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Satu', new_satu_path %>

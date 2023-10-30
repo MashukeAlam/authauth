@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Authauth</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <% if user_signed_in? %>
+    <%= button_to "Sign Out", destroy_user_session_path, :method => :delete %>
+    <% if current_user.admin? %>
+      <h4>You are an admin</h4>
+    <% elsif current_user.regular %>
+      <h4>You are a regular user. Try to get a role now.</h4>
+    <% end %>
+  <% end %>
+
+  <%= yield %>
+  </body>
+</html>
